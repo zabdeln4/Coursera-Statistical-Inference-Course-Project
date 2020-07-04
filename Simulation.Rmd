@@ -3,9 +3,9 @@ title: "Coursera Statistical Inference Course Project Part_1"
 author: "ZiadAbdelnabi"
 date: "7/4/2020"
 output:
+  word_document: default
   html_document: default
   pdf_document: default
-  word_document: default
 ---
 
 ```{r setup, include=FALSE}

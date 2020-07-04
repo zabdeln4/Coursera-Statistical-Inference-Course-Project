@@ -2,7 +2,9 @@
 title: "Coursera Statistical Inference Course Project Part_2"
 author: "ZiadAbdelnabi"
 date: "7/4/2020"
-output: html_document
+output:
+  word_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
