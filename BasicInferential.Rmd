@@ -1,0 +1,90 @@
+---
+title: "Coursera Statistical Inference Course Project Part_2"
+author: "ZiadAbdelnabi"
+date: "7/4/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview
+In part 2 of this this project we are performing basic inferential data analysis using the ToothGrowth data in the R datasets package.
+
+
+## Part 2: Basic Inferential Data Analysis Instructions
+Now in the second portion of the project, we’re going to analyze the ToothGrowth data in the R datasets package.
+
+### 1.Load the ToothGrowth data and perform some basic exploratory data analysis
+
+**For this analysis, the following R package is needed `ggplot2`**
+```{r load-packages, message = FALSE}
+library(ggplot2)
+```
+
+**Load the ToothGrowth data **
+```{r loaddata}
+library(datasets)
+data(ToothGrowth)
+```
+
+
+### 2. Provide a basic summary of the data and perform some basic exploratory data analysis
+```{r summarystats}
+str(ToothGrowth)
+head(ToothGrowth)
+summary(ToothGrowth)
+
+# Plot histogram of the numerical len variable to view the distribution
+ggplot(data=ToothGrowth, aes(x=as.factor(dose), y=len, fill=supp)) +
+    geom_bar(stat="identity") +
+    facet_grid(. ~ supp) +
+    xlab("Dose(mg)") +
+    ylab("Tooth length")
+```
+
+
+
+### 3. Hypothesis tests to compare tooth growth by supp and dose. 
+(Only use the techniques from class, even if there’s other approaches worth considering)
+
+```{r}
+hypoth1 <- t.test(len ~ supp, data = ToothGrowth)
+hypoth1$conf.int
+
+hypoth1$p.value
+
+hypoth2<-t.test(len ~ supp, data = subset(ToothGrowth, dose == 0.5))
+hypoth2$conf.int
+
+hypoth2$p.value
+
+hypoth3<-t.test(len ~ supp, data = subset(ToothGrowth, dose == 1))
+hypoth3$conf.int
+
+hypoth3$p.value
+
+hypoth4<-t.test(len ~ supp, data = subset(ToothGrowth, dose == 2))
+hypoth4$conf.int
+
+hypoth4$p.value
+
+```
+
+
+## Conclusions
+OJ ensures more tooth growth than VC for dosages 0.5 & 1.0. OJ and VC givesthe same amount of tooth growth for dose amount 2.0 mg/day. For the entire trail we cannot conclude OJ is more effective that VC for all scenarios.
+
+
+
+
+
+
+
+
+
+
+
+
+
